@@ -8,6 +8,9 @@ public class ScotomaSimulator : MonoBehaviour {
 	[Tooltip("Remove for plain black effect.")]
 	public Cubemap skybox;
 
+	[Tooltip("Color of the scotoma. Skybox filed should be blank for this to work.")]
+	public Color scotomaColor;
+
 	[Header("Left Eye Scotoma Settings")]
 	/// <summary>
 	/// Screen coverage at max angular velocity.
@@ -57,8 +60,7 @@ public class ScotomaSimulator : MonoBehaviour {
 	#endregion
 
 	#region Shader property IDs
-	private int _propAV;
-	private int _propFeather;
+	private int _propColor;
 	private int _propLeftEye;
 	private int _propRightEye;
 	#endregion
@@ -76,8 +78,9 @@ public class ScotomaSimulator : MonoBehaviour {
 	#region Messages
 	
 	void Awake () {
-		_m = new Material(Shader.Find("Hidden/Tunnelling"));
+		_m = new Material(Shader.Find("Hidden/Scotoma"));
 		
+		_propColor = Shader.PropertyToID("_Color");
 		_propLeftEye = Shader.PropertyToID("_LeftEye");
 		_propRightEye = Shader.PropertyToID("_RightEye");
 
@@ -145,6 +148,7 @@ public class ScotomaSimulator : MonoBehaviour {
 		} else {
 			_m.DisableKeyword("TUNNEL_SKYBOX");
 		}
+		_m.SetVector(_propColor, scotomaColor);
 	}
 
 	void OnRenderImage(RenderTexture src, RenderTexture dest){

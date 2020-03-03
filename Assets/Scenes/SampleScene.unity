@@ -308,11 +308,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skybox: {fileID: 0}
-  leftScotomaSize: 0.028
-  leftFeather: 0.014
-  rightScotomaSize: 0.028
-  rightFeather: 0.017
-  smoothTime: 0.15
+  scotomaColor: {r: 0, g: 0, b: 0, a: 0}
+  leftScotomaSize: 0.01
+  leftFeather: 0.01
+  rightScotomaSize: 0.01
+  rightFeather: 0.01
+  sizeSmoothTime: 0.15
+  positionSmoothTime: 0.15
 --- !u!1 &1337934515
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,7 @@
-﻿Shader "Hidden/Tunnelling" {
+﻿Shader "Hidden/Scotoma" {
 	Properties {
 		_MainTex ("Texture", 2D) = "white" {}
-		_AV ("Angular Velocity", Float) = 0
-		_Feather ("Feather", Float) = 0.1
-		_OffsetX ("Offset x", Float) = 0.5
-		_OffsetY ("Offset y", Float) = 0.5
+		_Color ("Color", color) = (0,0,0,0)
 		_LeftEye ("Left Eye", Vector) = (0.5,0.5,0.01,0.01)
 		_RightEye ("Right Eye", Vector) = (0.5,0.5,0.01,0.01)
 	}
@@ -39,10 +36,7 @@
 			
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
-			float _AV;
-			float _Feather;
-			float _OffsetX;
-			float _OffsetY;
+			fixed4 _Color;
 			float4 _LeftEye;
 			float4 _RightEye;
 
@@ -92,11 +86,11 @@
 				#if TUNNEL_SKYBOX
 				fixed4 effect = fixed4(sampleSkybox(coords),0);
 				#else
-				fixed4 effect = fixed4(1,0,0,0);
+				fixed4 effect = _Color;
 				#endif
 
 				//return lerp(col, effect, t);
-				return lerp(col, fixed4(0,0,0,0), t);
+				return lerp(col, effect, t);
 			}
 			ENDCG
 		}
