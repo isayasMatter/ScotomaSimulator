@@ -61,9 +61,9 @@
 			inline float4 screenCoords(float2 uv){
 				float2 c;
 				if(unity_StereoEyeIndex == 0){
-					c = float2((uv.x - _OffsetX), (uv.y - _OffsetY)) * 2;
+					c = float2((uv.x - _LeftEye.x), (uv.y - _LeftEye.y)) * 2;
 				}else{
-					c = float2((uv.x - _OffsetX + 0.1), (uv.y - _OffsetY + 0.1)) * 2;
+					c = float2((uv.x - _RightEye.x), (uv.y - _RightEye.y)) * 2;
 				}
 				
 				float4 vPos = mul(_EyeProjection[unity_StereoEyeIndex], float4(c, 0, 1));
@@ -77,8 +77,16 @@
 
 				float4 coords = screenCoords(i.uv);
 				float radius = length(coords.xy / (_ScreenParams.xy / 2)) / 2;
-				float avMin = (1 - _AV) - _Feather;
-				float avMax = (1 - _AV) + _Feather;
+				
+				float4 eyeProps;
+				if(unity_StereoEyeIndex == 0){
+					eyeProps = _LeftEye;
+				}else{
+					eyeProps = _RightEye;
+				}
+
+				float avMin = (1 - eyeProps.z) - eyeProps.w;
+				float avMax = (1 - eyeProps.z) + eyeProps.w;
 				float t = 1-saturate((radius - avMin) / (avMax - avMin));
 
 				#if TUNNEL_SKYBOX
