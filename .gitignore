@@ -63,5 +63,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-Plugins/
-Plugins.*
+# Test folders
+[Pp]lugins/
+[Pp]lugins.*
+[Pp]ackages/
