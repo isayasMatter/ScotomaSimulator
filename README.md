@@ -6,5 +6,12 @@ Ths shader and the attached script allows us to have granular control of the sco
 
 ![Image of Control Panel](Images/control-panel.png)
 
+All you need to do to allow the scotomas to move with your eyes is to modify the following lines of code in the ScotomaSimulator.cs file.
+
+```c#
+//Eye positions in normalized screen coordinates. You need to update these values from your eye tracker.
+_leftEyePosition = new Vector2(0.5f,0.5f);
+_rightEyePosition = new Vector2(0.5f,0.5f);
+```
 
 

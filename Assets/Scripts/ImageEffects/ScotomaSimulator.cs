@@ -37,7 +37,7 @@ public class ScotomaSimulator : MonoBehaviour {
 	[Range(0f, 0.5f)][Tooltip("Feather around cut-off as fraction of screen.")]
 	public float rightFeather = 0.01f;
 
-	[Header("Right Eye Scotoma Settings")]
+	[Header("Other Settings")]
 	/// <summary>
 	/// Smooth out radius over time. 0 for no smoothing.
 	/// </summary>
