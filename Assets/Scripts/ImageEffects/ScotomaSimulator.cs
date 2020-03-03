@@ -70,6 +70,11 @@ public class ScotomaSimulator : MonoBehaviour {
 	Matrix4x4[] _eyeProjection = new Matrix4x4[2];
 	#endregion
 
+	#region Eye Positions
+	private Vector2 _leftEyePosition;
+	private Vector2 _rightEyePosition;
+	#endregion
+
 	#region Misc Fields
 	private Material _m;
 	private Camera _cam;
@@ -83,6 +88,9 @@ public class ScotomaSimulator : MonoBehaviour {
 		_propColor = Shader.PropertyToID("_Color");
 		_propLeftEye = Shader.PropertyToID("_LeftEye");
 		_propRightEye = Shader.PropertyToID("_RightEye");
+
+		_leftEyePosition = new Vector2(0.5f,0.5f);
+		_rightEyePosition = new Vector2(0.5f,0.5f);
 
 		_cam = GetComponent<Camera>();
 	}
@@ -99,12 +107,15 @@ public class ScotomaSimulator : MonoBehaviour {
 		rightSS = 1-rightScotomaSize;
 		_rightSS = Mathf.SmoothDamp(_rightSS, rightSS, ref _rightSlew, sizeSmoothTime);
 
+		//Eye positions in normalized screen coordinates. You need to update these values from your eye tracker.
+		_leftEyePosition = new Vector2(0.5f,0.5f);
+		_rightEyePosition = new Vector2(0.5f,0.5f);
 		
 		//Pass data to shader in the form of a Vector4 representing
 		//x-direction, y-direction, scotoma size, and feather size all in normalized cordinates [0..1]
 
-		_m.SetVector(_propLeftEye, new Vector4(0.5f, 0.5f, _leftSS, leftFeather));
-		_m.SetVector(_propRightEye, new Vector4(0.5f, 0.5f, _rightSS, rightFeather));
+		_m.SetVector(_propLeftEye, new Vector4(_leftEyePosition.x, _leftEyePosition.y, _leftSS, leftFeather));
+		_m.SetVector(_propRightEye, new Vector4(_rightEyePosition.x, _rightEyePosition.y, _rightSS, rightFeather));
 	}
 
 	void OnPreRender(){
