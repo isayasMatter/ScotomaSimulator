@@ -1,10 +1,10 @@
 # Scotoma Simulator
 
-This repo contains the shader and script needed to simulate two scotomas (one for each eye) rendered as post render effects. Implmenting them as post render effects allows the scotomas to be rendered after everything is rendered and appear as if they are in or very close to the user's eye. 
+This repo contains the shader and script needed to simulate two scotomas (one for each eye) rendered as post render effects. Implementing them as post render effects allows the scotomas to be rendered after everything is rendered and appear as if they are in or very close to the user's eye. This code was developed as part of a larger project.
 
 <img src="Images/scotoma-simulator.png" width="90%" >
 
-Ths shader and the attached script allow us to have granular control of the scotomas' behaviour including their size, feathering effect (so their edges appear natural), movement and color. The behaviour of the scotoma can be manipulated separately for each eye, or if you chose so, together for both eyes. Together, the above features allow you to customize the scotomas for each user, or even manipulate the behaviour of scotomas in the middle of an experiment. Moreover, you can add custom behaviours without the need to do big changes, for instance, showing scotomas only when they overlap can be implemented by manipulating the effect size in a single if block that checks the position of the two eyes.
+Ths shader and the attached script allow us to have granular control of the scotomas' behaviour including their size, feathering effect (so their edges appear soft and natural), movement and color. The behaviour of the scotomas can be manipulated separately for each eye, or if you chose so, together for both eyes. Together, the above features allow you to customize the scotomas for each user, or even manipulate the behaviour of scotomas in the middle of an experiment. Moreover, you can add custom behaviours without the need to do big changes, for instance, showing scotomas only when they overlap can be implemented by manipulating the effect size in a single if block that checks the position of the two eyes.
 
 ## Installation
 
