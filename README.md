@@ -1,6 +1,6 @@
 # Scotoma Simulator
 
-This repo contains the shader and script needed to simulate two scotomas (one for each eye) rendered as post render effects. Implementing them as post render effects allows the scotomas to be rendered after everything is rendered and appear as if they are in or very close to the user's eye. This code was developed as part of a larger project.
+This repo contains the shader and script needed to simulate two macular degenration scotomas (one for each eye) rendered as post render effects. Implementing them as post render effects allows the scotomas to be rendered after everything is rendered and appear as if they are in or very close to the user's eye. This code was developed as part of a larger project that investigates VR based intervention for macular degeration.
 
 <img src="Images/scotoma-simulator.png" width="90%" >
 
